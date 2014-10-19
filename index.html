@@ -1,7 +1,10 @@
 <html>
 
 <head>
-<script src="http//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<title>Through a Smartphone Darkly</title>
+
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="jquery.js"></script>
 
 <style type="text/css">
@@ -28,7 +31,14 @@ body {
 
 <body>
 
-<div id="content">
+<div id="content" style="display: none;">
+
+    <section id="instructions">
+
+        <p>Type enter or click to continue.</p>
+
+        <a href="#start" data-type="goto"></a>
+    </section>
 
     <section id="start">
         <p>
@@ -377,12 +387,18 @@ body {
       }
     });
 
+    $('body').on('click', function(e){
+        advance();
+    });
+
     $('[data-type="goto"]').on('click', function(e) {
       e.preventDefault();
       showSection($(this).attr('href'));
     });
 
-    showSection('#start');
+    $('#content').show();
+
+    showSection('#instructions');
   });
 
 })($);
